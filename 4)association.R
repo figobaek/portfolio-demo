@@ -1,24 +1,24 @@
 
-# ÇÑ±Û±úÁü ¹æÁö 
+# í•œê¸€ê¹¨ì§ ë°©ì§€ 
 par(family='AppleMyungjo')
 
-# tidyverse ¼³Ä¡
+# tidyverse ì„¤ì¹˜
 install.packages('tidyverse')
 library(tidyverse)
 
-# stringr ¼³Ä¡ 
+# stringr ì„¤ì¹˜ 
 install.packages('stringr')
 library(stringr)
 
-# konlp ÀÚ¿¬¾î Ã³¸® ÆĞÅ°Áö »ç¿ëÀ§ÇÑ ÀÚ¹Ù ¼³Ä¡ 
+# konlp ìì—°ì–´ ì²˜ë¦¬ íŒ¨í‚¤ì§€ ì‚¬ìš©ìœ„í•œ ìë°” ì„¤ì¹˜ 
 install.packages("rJava")
 library(rJava)
 install_jdk()
-# °æ·Î ¼³Á¤!! 
+# ê²½ë¡œ ì„¤ì •!! 
 Sys.getenv("JAVA_HOME")
 Sys.setenv(JAVA_HOME = '/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home')
 
-# ÀÚ¿¬¾î Ã³¸® ÆĞÅ°Áö ºÒ·¯¿À±â. 
+# ìì—°ì–´ ì²˜ë¦¬ íŒ¨í‚¤ì§€ ë¶ˆëŸ¬ì˜¤ê¸°. 
 install.packages('koNLP')
 library(KoNLP) 
 useSejongDic()
@@ -30,7 +30,7 @@ install.packages(c('stringr', 'hash', 'tau', 'Sejong', 'RSQLite', 'devtools'), t
 install.packages("remotes")
 remotes::install_github('haven-jeon/KoNLP', upgrade = "never", INSTALL_opts=c("--no-multiarch"))
 
-# ¿¬°ü¼º ºĞ¼® °ü·Ã ¸Ş¼Òµåµé
+# ì—°ê´€ì„± ë¶„ì„ ê´€ë ¨ ë©”ì†Œë“œë“¤
 library(arules)
 install.packages('arulesViz')
 library(arulesViz)
@@ -39,37 +39,37 @@ library(igraph)
 
 df32 <- read.csv("/Users/figobaek/Desktop/objective/portfolio/dfytcomments.csv", header = T, stringsAsFactors = F)
   
-1) µ¥ÀÌÅÍ ÂÉ°³±â 
-min <- df32[df32$pub == '¹ÎÀ½»ç', 'comment']
-md <- df32[df32$pub == '¹®ÇĞµ¿³×', 'comment']
-cb <- df32[df32$pub == 'Ã¢ºñ', 'comment']
+1) ë°ì´í„° ìª¼ê°œê¸° 
+min <- df32[df32$pub == 'ë¯¼ìŒì‚¬', 'comment']
+md <- df32[df32$pub == 'ë¬¸í•™ë™ë„¤', 'comment']
+cb <- df32[df32$pub == 'ì°½ë¹„', 'comment']
 
 
 
-2) ´Ü¾î Á¶°¢ ³»±â 
-#¼¼ ¹ø µ¹¸®±â ¹ÎÀ½»ç¿ëÀº ÀüÃ³¸® Ãß°¡!
+2) ë‹¨ì–´ ì¡°ê° ë‚´ê¸° 
+#ì„¸ ë²ˆ ëŒë¦¬ê¸° ë¯¼ìŒì‚¬ìš©ì€ ì „ì²˜ë¦¬ ì¶”ê°€!
 wlist <- list()
 for(i in 1:length(min)){
   words <- SimplePos09(min[i])
-  extracted <- str_match(words, '([°¡-???]+)/[NPM]')
+  extracted <- str_match(words, '([ê°€-í£]+)/[NPM]')
   keyword <- extracted[,2]
   nouns <- keyword[!is.na(keyword)]
-  nouns <- str_replace_all(nouns, 'ÀÎ»ó[°¡-???]+', 'ÀÎ»ó±í´Ù')
-  nouns <- str_replace_all(nouns, '¹ÎÀ½»çÆ¼ºñ¸¦+', 'mintv')
-  nouns <- str_replace_all(nouns, '¹ÎÀ½»ç[°¡-???]+', '¹ÎÀ½»ç')
-  nouns <- str_replace_all(nouns, 'mintv', '¹ÎÀ½»çtv')
-  nouns <- str_replace_all(nouns, '[°¡-???]?ÀÎÅÍºä[°¡-???]+', 'ÀÎÅÍºä')
-  nouns <- str_replace_all(nouns, '[°¡-???]?°íµîÇĞ»ı[°¡-???]+', '°íµîÇĞ»ıµé')
-  nouns <- str_replace_all(nouns, 'Ã¥µğÀÚÀÎÀÌ', 'bookd')
-  nouns <- str_replace_all(nouns, '[°¡-???]?µğÀÚÀÎ[°¡-???]+', 'µğÀÚÀÎ')
-  nouns <- str_replace_all(nouns, 'bookd', 'Ã¥µğÀÚÀÎ')
-  nouns <- str_replace_all(nouns, 'ÇĞ±³µµ¼­°ü[°¡-???]+', 'ÇĞ±³µµ¼­°ü')
-  nouns <- str_replace_all(nouns, '´À¸®', '´Ê´Ù')
-  nouns <- str_replace_all(nouns, '´À[°¡-???]+', '´À³¦')
-  nouns <- str_replace_all(nouns, '·Î¹Ù²ã¾ßÇÒ', '')
-  nouns <- str_replace_all(nouns, '°°¾Æ¿é', '')
-  nouns <- str_replace_all(nouns, 'µğÀÚÀÌ³Ê[°¡-???]', 'µğÀÚÀÌ³Ê')
-  nouns <- str_replace_all(nouns, 'ÃµÀç[°¡-???]+', 'ÃµÀçµğÀÚÀÌ³Ê')
+  nouns <- str_replace_all(nouns, 'ì¸ìƒ[ê°€-í£]+', 'ì¸ìƒê¹Šë‹¤')
+  nouns <- str_replace_all(nouns, 'ë¯¼ìŒì‚¬í‹°ë¹„ë¥¼+', 'mintv')
+  nouns <- str_replace_all(nouns, 'ë¯¼ìŒì‚¬[ê°€-í£]+', 'ë¯¼ìŒì‚¬')
+  nouns <- str_replace_all(nouns, 'mintv', 'ë¯¼ìŒì‚¬tv')
+  nouns <- str_replace_all(nouns, '[ê°€-í£]?ì¸í„°ë·°[ê°€-í£]+', 'ì¸í„°ë·°')
+  nouns <- str_replace_all(nouns, '[ê°€-í£]?ê³ ë“±í•™ìƒ[ê°€-í£]+', 'ê³ ë“±í•™ìƒë“¤')
+  nouns <- str_replace_all(nouns, 'ì±…ë””ìì¸ì´', 'bookd')
+  nouns <- str_replace_all(nouns, '[ê°€-í£]?ë””ìì¸[ê°€-í£]+', 'ë””ìì¸')
+  nouns <- str_replace_all(nouns, 'bookd', 'ì±…ë””ìì¸')
+  nouns <- str_replace_all(nouns, 'í•™êµë„ì„œê´€[ê°€-í£]+', 'í•™êµë„ì„œê´€')
+  nouns <- str_replace_all(nouns, 'ëŠë¦¬', 'ëŠ¦ë‹¤')
+  nouns <- str_replace_all(nouns, 'ëŠ[ê°€-í£]+', 'ëŠë‚Œ')
+  nouns <- str_replace_all(nouns, 'ë¡œë°”ê¿”ì•¼í• ', '')
+  nouns <- str_replace_all(nouns, 'ê°™ì•„ìš¥', '')
+  nouns <- str_replace_all(nouns, 'ë””ìì´ë„ˆ[ê°€-í£]', 'ë””ìì´ë„ˆ')
+  nouns <- str_replace_all(nouns, 'ì²œì¬[ê°€-]+', 'ì²œì¬ë””ìì´ë„ˆ')
   nouns <- unique(nouns)
   nouns <- Filter(function(x){nchar(x)>1},nouns)
   nouns <- list(nouns)
@@ -78,43 +78,37 @@ for(i in 1:length(min)){
 mintest <- unique(wlist) 
 minl <- mintest
 
-#Ãß°¡ ÀüÃ³¸® 
-#°Ë»ö -> ±³Ã¼ -> °Ë»ö -> ±³Ã¼ -> ÇÑ °Ë»ö¾î¿¡ ÀâÈ÷´Â ´Ù¸¥ ÀÇ¹Ì ºĞ·ù 
-#-> ±³Ã¼ -> ºĞ·ùÇß´ø °Í ´Ù½Ã ±³Ã¼
+#ì¶”ê°€ ì „ì²˜ë¦¬ 
+#ê²€ìƒ‰ -> êµì²´ -> ê²€ìƒ‰ -> êµì²´ -> í•œ ê²€ìƒ‰ì–´ì— ì¡íˆëŠ” ë‹¤ë¥¸ ì˜ë¯¸ ë¶„ë¥˜ 
+#-> êµì²´ -> ë¶„ë¥˜í–ˆë˜ ê²ƒ ë‹¤ì‹œ êµì²´
 
-str_extract_all(minl, 'µğÀÚÀÌ³Ê[°¡-???]', simplify=T)
-minl <- str_replace_all(minl, 'µğÀÚÀÌ³Ê[°¡-???]', 'µğÀÚÀÌ³Ê')
+minl <- str_replace_all(minl, 'ì¸ìƒ[ê°€-í£]+', 'ì¸ìƒê¹Šë‹¤')
+str_extract_all(minl, 'ë¯¼ìŒì‚¬[ê°€-í£]+', simplify=T)
+str_replace_all(minl, 'ë¯¼ìŒì‚¬[ê°€-í£]+', 'ë¯¼ìŒì‚¬')
+minl <- str_replace_all(minl, 'ë¯¼ìŒì‚¬í‹°ë¹„ë¥¼+', 'mintv')
+minl <- str_replace_all(minl, 'ë¯¼ìŒì‚¬[ê°€-í£]+', 'ë¯¼ìŒì‚¬')
+minl <- str_replace_all(minl, 'mintv', 'ë¯¼ìŒì‚¬tv')
+str_extract_all(minl, 'ë¯¼ìŒì‚¬[ê°€-í£]+', simplify=T)
+str_extract_all(minl, '[ê°€-í£]?ì¸í„°ë·°[ê°€-í£]+', simplify=T)
+minl <- str_replace_all(minl, '[ê°€-í£]?ì¸í„°ë·°[ê°€-í£]+', 'ì¸í„°ë·°')
+str_extract_all(minl, '[ê°€-í£]?ê³ ë“±í•™ìƒ[ê°€-í£]+', simplify=T)
+minl <- str_replace_all(minl, '[ê°€-í£]?ê³ ë“±í•™ìƒ[ê°€-í£]+', 'ê³ ë“±í•™ìƒë“¤')
+str_extract_all(minl, '[ê°€-í£]?ë””ìì¸[ê°€-í£]+', simplify=T)
+minl <- str_replace_all(minl, '[ê°€-í£]?ê³ ë“±í•™ìƒ[ê°€-í£]+', 'ê³ ë“±í•™ìƒë“¤')
+minl <- str_replace_all(minl, 'ì±…ë””ìì¸ì´', 'bookd')
+minl <- str_replace_all(minl, '[ê°€-í£]?ë””ìì¸[ê°€-í£]+', 'ë””ìì¸')
+minl <- str_replace_all(minl, 'bookd', 'ì±…ë””ìì¸')
 
-str_extract_all(mintest, 'ÃµÀç[°¡-???]+', simplify=T)
-nouns <- str_replace_all(nouns, 'ÃµÀç[°¡-???]+', 'ÃµÀçµğÀÚÀÌ³Ê')
+str_extract_all(minl, '[ê°€-í£]?ë„ì„œê´€[ê°€-í£]+', simplify=T)
+minl <- str_replace_all(minl, 'í•™êµë„ì„œê´€[ê°€-í£]+', 'í•™êµë„ì„œê´€')
+minl <- str_replace_all(minl, 'í•™í•™êµë„ì„œê´€', 'í•™êµë„ì„œê´€')
+# ë¯¼ìŒì‚¬ ì¶”ê°€ ì‘ì—… ì™„ë£Œ
 
-minl <- str_replace_all(minl, 'ÀÎ»ó[°¡-???]+', 'ÀÎ»ó±í´Ù')
-str_extract_all(minl, '¹ÎÀ½»ç[°¡-???]+', simplify=T)
-str_replace_all(minl, '¹ÎÀ½»ç[°¡-???]+', '¹ÎÀ½»ç')
-minl <- str_replace_all(minl, '¹ÎÀ½»çÆ¼ºñ¸¦+', 'mintv')
-minl <- str_replace_all(minl, '¹ÎÀ½»ç[°¡-???]+', '¹ÎÀ½»ç')
-minl <- str_replace_all(minl, 'mintv', '¹ÎÀ½»çtv')
-str_extract_all(minl, '¹ÎÀ½»ç[°¡-???]+', simplify=T)
-str_extract_all(minl, '[°¡-???]?ÀÎÅÍºä[°¡-???]+', simplify=T)
-minl <- str_replace_all(minl, '[°¡-???]?ÀÎÅÍºä[°¡-???]+', 'ÀÎÅÍºä')
-str_extract_all(minl, '[°¡-???]?°íµîÇĞ»ı[°¡-???]+', simplify=T)
-minl <- str_replace_all(minl, '[°¡-???]?°íµîÇĞ»ı[°¡-???]+', '°íµîÇĞ»ıµé')
-str_extract_all(minl, '[°¡-???]?µğÀÚÀÎ[°¡-???]+', simplify=T)
-minl <- str_replace_all(minl, '[°¡-???]?°íµîÇĞ»ı[°¡-???]+', '°íµîÇĞ»ıµé')
-minl <- str_replace_all(minl, 'Ã¥µğÀÚÀÎÀÌ', 'bookd')
-minl <- str_replace_all(minl, '[°¡-???]?µğÀÚÀÎ[°¡-???]+', 'µğÀÚÀÎ')
-minl <- str_replace_all(minl, 'bookd', 'Ã¥µğÀÚÀÎ')
-
-str_extract_all(minl, '[°¡-???]?µµ¼­°ü[°¡-???]+', simplify=T)
-minl <- str_replace_all(minl, 'ÇĞ±³µµ¼­°ü[°¡-???]+', 'ÇĞ±³µµ¼­°ü')
-minl <- str_replace_all(minl, 'ÇĞÇĞ±³µµ¼­°ü', 'ÇĞ±³µµ¼­°ü')
-# ¹ÎÀ½»ç Ãß°¡ ÀÛ¾÷ ¿Ï·á
-
-# ¹®ÇĞµ¿³×, Ã¢ºñ¿ë 
+# ë¬¸í•™ë™ë„¤, ì°½ë¹„ìš© 
 wlist <- list()
 for(i in 1:length(md)){
   words <- SimplePos09(md[i])
-  extracted <- str_match(words, '([°¡-???]+)/[NPM]')
+  extracted <- str_match(words, '([ê°€-í£]+)/[NPM]')
   keyword <- extracted[,2]
   nouns <- keyword[!is.na(keyword)]
   nouns <- unique(nouns)
@@ -129,7 +123,7 @@ mdl
 wlist <- list()
 for(i in 1:length(cb)){
   words <- SimplePos09(cb[i])
-  extracted <- str_match(words, '([°¡-???]+)/[NPM]')
+  extracted <- str_match(words, '([ê°€-]+)/[NPM]')
   keyword <- extracted[,2]
   nouns <- keyword[!is.na(keyword)]
   nouns <- unique(nouns)
@@ -147,21 +141,21 @@ cbl
 
 =====================================
 
-3) apriori ¸Ş¼Òµå¿¡ ¸Â´Â Æ®·»Á§¼Ç ÇüÅÂ·Î º¯°æÇØÁÖ±â 
-# Æ®·»Á§¼Ç ÇüÅÂ·Î º¯°æ
+3) apriori ë©”ì†Œë“œì— ë§ëŠ” íŠ¸ë Œì ì…˜ í˜•íƒœë¡œ ë³€ê²½í•´ì£¼ê¸° 
+# íŠ¸ë Œì ì…˜ í˜•íƒœë¡œ ë³€ê²½
 minwt <- as(minl, 'transactions') 
-# ¿ä¾àÇØ¼­ º¸±â 
+# ìš”ì•½í•´ì„œ ë³´ê¸° 
 summary(minwt) 
-# Å×ÀÌºí »ı¼º, arules ÀÖ¾î¾ß µ¹¾Æ°¨. 
-minta <- crossTable(minwt) # ¹ÎÀ½»ç
-mdwt <- as(mdl, 'transactions') # ¹®ÇĞµ¿³×
+# í…Œì´ë¸” ìƒì„±, arules ìˆì–´ì•¼ ëŒì•„ê°. 
+minta <- crossTable(minwt) # ë¯¼ìŒì‚¬
+mdwt <- as(mdl, 'transactions') # ë¬¸í•™ë™ë„¤
 summary(mdwt) 
 mdta <- crossTable(mdwt)
-cbwt <- as(cbl, 'transactions') # Ã¢ºñ
+cbwt <- as(cbl, 'transactions') # ì°½ë¹„
 summary(cbwt) 
 cbta <- crossTable(cbwt)
 
-ºóµµ¼ö Ã¼Å© ½Ã°¢È­ # Å×ÀÌºí »ı¼º Àü ÆÄÀÏ·Î °¡´É!
+ë¹ˆë„ìˆ˜ ì²´í¬ ì‹œê°í™” # í…Œì´ë¸” ìƒì„± ì „ íŒŒì¼ë¡œ ê°€ëŠ¥!
 itemFrequencyPlot(minwt, support=0.1)
 itemFrequencyPlot(minwt, topN=10)
 itemFrequencyPlot(mdwt, support=0.05)
@@ -169,7 +163,7 @@ itemFrequencyPlot(mdwt, topN=10)
 itemFrequencyPlot(cbwt, support=0.1)
 itemFrequencyPlot(cbwt, topN=10)
 
-4) ¿¬°ü¼º ºĞ¼® ¸Ş¼Òµå Àû¿ë # Æ®·£Á§¼Ç ÇüÅÂ¸¦ ³Ö´Â °ÍÀÌ´Ù.
+4) ì—°ê´€ì„± ë¶„ì„ ë©”ì†Œë“œ ì ìš© # íŠ¸ëœì ì…˜ í˜•íƒœë¥¼ ë„£ëŠ” ê²ƒì´ë‹¤.
 minap <- apriori(minwt, parameter=list(supp=0.04, conf=0.04))
 inspect(minap)
 plot(minap,method="graph")
@@ -181,34 +175,34 @@ inspect(cbap)
 plot(cbap,method="graph")
 
 
-5) ¿¬°ü¼º ½Ã°¢È­
-<¹ÎÀ½»ç>
+5) ì—°ê´€ì„± ì‹œê°í™”
+<ë¯¼ìŒì‚¬>
 rules <- labels(minap, ruleSep=" ")
 rules <- sapply(rules, strsplit, " ", USE.NAMES = F)
 rulemat <- do.call('rbind', rules)
 ruleg <- graph.edgelist(rulemat, directed =F)
 
-# dev.off(), ±×·¡ÇÁ ¾È ±×·ÁÁú ¶§
+# dev.off(), ê·¸ë˜í”„ ì•ˆ ê·¸ë ¤ì§ˆ ë•Œ
 plot.igraph(ruleg, vertex.label=V(ruleg)$name, vertex.label.cex=1.0,
             vertex.label.color='black', vertex.size=20, vertex.color='chartreuse2',
             vertex.frame.color='chartreuse2')
-<¹®ÇĞµ¿³×>
+<ë¬¸í•™ë™ë„¤>
 rules <- labels(mdap, ruleSep=" ")
 rules <- sapply(rules, strsplit, " ", USE.NAMES = F)
 rulemat <- do.call('rbind', rules)
 ruleg <- graph.edgelist(rulemat, directed =F)
 
-# dev.off(), ±×·¡ÇÁ ¾È ±×·ÁÁú ¶§
+# dev.off(), ê·¸ë˜í”„ ì•ˆ ê·¸ë ¤ì§ˆ ë•Œ
 plot.igraph(ruleg, vertex.label=V(ruleg)$name, vertex.label.cex=1.0,
             vertex.label.color='black', vertex.size=20, vertex.color='orange',
             vertex.frame.color='orange')
-<Ã¢ºñ>
+<ì°½ë¹„>
 rules <- labels(cbap, ruleSep=" ")
 rules <- sapply(rules, strsplit, " ", USE.NAMES = F)
 rulemat <- do.call('rbind', rules)
 ruleg <- graph.edgelist(rulemat, directed =F)
 
-# dev.off(), ±×·¡ÇÁ ¾È ±×·ÁÁú ¶§
+# dev.off(), ê·¸ë˜í”„ ì•ˆ ê·¸ë ¤ì§ˆ ë•Œ
 plot.igraph(ruleg, vertex.label=V(ruleg)$name, vertex.label.cex=1.0,
             vertex.label.color='blue', vertex.size=20, vertex.color='violet',
             vertex.frame.color='black')
