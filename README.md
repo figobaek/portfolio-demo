@@ -30,7 +30,7 @@
 -50% ~ 57% 사이의 예측 정확도 확인  
 -중요 컬럼은 페이지 수, 책 무게, 가격, 리뷰 갯수 순으로 나타남
 
-![selfyesrandom](./Users/figobaek/Desktop/objective/portfolio/image/selfyesrandom.png)
+![selfyesrandom](https://user-images.githubusercontent.com/66956480/105605757-9b511200-5dd9-11eb-8a77-5ca7a92056f1.png)
 
 # 출판사 댓글 군집 분석
 
@@ -52,7 +52,7 @@
 -적당한 군집 수는 두 개로 나타남  
 -출판사 별로 댓글 작성 유형이 다를 것으로 예측했으나 맞지 않음. 
 
-![kmeansvisual](./Users/figobaek/Desktop/objective/portfolio/image/kmeansvisual.png)
+![kmeansvisual](https://user-images.githubusercontent.com/66956480/105605863-c8052980-5dd9-11eb-960f-25ce80ed56a0.png)
 
 # 출판사 댓글 연관성 분석 
 
