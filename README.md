@@ -30,7 +30,7 @@
 -50% ~ 57% 사이의 예측 정확도 확인  
 -중요 컬럼은 페이지 수, 책 무게, 가격, 리뷰 갯수 순으로 나타남
 
-(중요 컬럼 그래프 이미지)
+![result](./Users/figobaek/Desktop/objective/portfolio/image/selfyesrandom.png)
 
 # 출판사 댓글 군집 분석
 
@@ -52,7 +52,7 @@
 -적당한 군집 수는 두 개로 나타남  
 -출판사 별로 댓글 작성 유형이 다를 것으로 예측했으나 맞지 않음. 
 
-(군집 시각화 이미지)
+![kmeans](./Users/figobaek/Desktop/objective/portfolio/image/kmeansvisual.png)
 
 # 출판사 댓글 연관성 분석 
 
