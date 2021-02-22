@@ -69,5 +69,5 @@
 
 (연관성 분석 이미지)
 
-## [발표용 자료](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6712cd7e-3379-4586-bec4-2adfc0f9940a/.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210123T152419Z&X-Amz-Expires=86400&X-Amz-Signature=4cf2fad2b6524e9c6549685d89a9b9c2ad1c6403da2d9ab0b739a9ccb6ce2039&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%223-%25EC%2599%2584%25EB%258F%2585%2520%25EC%2598%2588%25EC%25B8%25A1%2520%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598%2520%25EB%25AA%25A8%25EB%258D%25B8%25EB%25A7%2581%2520%25EB%25B0%258F%2520%25EC%25B6%259C%25ED%258C%2590%25EC%2582%25AC%2520%25EC%2598%2581%25EC%2583%2581%2520%25EB%258C%2593%25EA%25B8%2580%2520%25EB%25B6%2584%25EC%2584%259D.pdf%22)
+## [발표용 자료][백경재.pdf](https://github.com/figobaek/portfolio-demo/files/6019259/default.pdf)
 
