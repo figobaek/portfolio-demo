@@ -67,7 +67,7 @@
 ### 4. 분석 결과 시각화 하여 특징 찾기, 결론 도출
 -댓글에서 자주 나온 단어를 확인해 마케팅 포인트로 삼을 수 있음을 확인
 
-(연관성 분석 이미지)
+![assorules](<img width="978" alt="assorules" src="https://user-images.githubusercontent.com/66956480/108652128-bca33c00-7506-11eb-974b-b466940bf25e.png">)
 
 ## [발표용 자료](https://www.notion.so/Pdf-file-for-presentaion-98595c70379241f89df77d19bb5ee6c7)
 
