@@ -69,5 +69,5 @@
 
 (연관성 분석 이미지)
 
-## [발표용 자료][백경재.pdf](https://github.com/figobaek/portfolio-demo/files/6019259/default.pdf)
+## [발표용 자료](https://www.notion.so/Pdf-file-for-presentaion-98595c70379241f89df77d19bb5ee6c7)
 
