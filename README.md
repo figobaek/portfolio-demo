@@ -1,25 +1,24 @@
-# English ver.
 
 # Figo’s final portfolio during the ITWILL data-analyst course (Nov, 2020)
 
 ## (1) Analysis of the books data 
-###  goal: make reading completed prediction algorithm model with the data purchased books and ML 
-###  [Process] 
+### goal: make reading completed prediction algorithm model with the data purchased books and ML 
+### [Process]
 ### 1.collect data
- -collect personal data(input 100 books that I recently have bought) + scrap regarding data(yes24, book shopping mall, bestseller top 100)
+-collect personal data(input 100 books that I recently have bought) + scrap regarding data(yes24, book shopping mall, bestseller top 100)
 -> total 200 books
-### 2.data cleansing
+### 2.data cleansing
 
 -change column names
 -change data type(one-hot-encoding, categorize)
-### 3.data preprocessing and select features
- -data normalization & standardization
+### 3.data preprocessing and select features
+-data normalization & standardization
 -select feature that would be assumed to meaningful
-### 4.check the important columns through executing ML and visualization
+### 4.check the important columns through executing ML and visualization
 -Decision Tree
 -Ensemble(bagging, random forest, boosting)
 -1)Train, Test: execute with my personal data 2) Train: the personal data Test: the scrapped data
-### 5.derive insights from the result
+### 5.derive insights from the result
 
 ![selfyesrandom](https://user-images.githubusercontent.com/66956480/105605757-9b511200-5dd9-11eb-8a77-5ca7a92056f1.png)
 
@@ -28,40 +27,37 @@ after train with self-made data(100 books)
 -confirm prediction accuracy between 50% and 57%
 -important columns are the weight of the book, how many pages of the book, salespoint, how many reviews, in order.
 
-
-
 ## (2) Analysis of youtube video comments of the publisher with Kmeans clustering
 
 ### The intention: clustering comments from youtube videos of publishers that are popular based on the counts of comments after pre-processing, which is to confirm ### a hypothesis that the type of comments would be different publisher’s comments one another.
-###  [Process]
+### [Process]
 
 ###1.collect data
 -select three youtube videos, collect them with selenium module
-### 2.data cleansing & pre-processing
+### 2.data cleansing & pre-processing
 -concatenate in a data frame and execute Natural Language Processing(NLP, with regular expression)
-### 3.clustering with Kmeans module 
+### 3.clustering with Kmeans module 
 -measure with Siluette and Elbow method.
 -visualizing with Kmeans based on the result from the measurement by S & M
-### 4.come to the conclusion
+### 4.come to the conclusion
 -the result showed that the adequate counts for the clustering are two. 
 -It was not right what I expected it would be different the type of comments each publisher one another.
 
 ![kmeansvisual](https://user-images.githubusercontent.com/66956480/105605863-c8052980-5dd9-11eb-960f-25ce80ed56a0.png)
 
 
-## (3) Analysis of youtube video comments of the publisher with association rules 
+## (3) Analysis of youtube video comments of the publisher with association rules 
 
 ### The intention: executing association rules of comments from youtube videos of publishers that are popular based on the counts of comments after pre-processing, and try to find the marketing point from the insight that 
-###  [Process]
+### [Process]
 ### the first, second stages are the same as the Kmeans clustering’s
-###  3.execute analysis with apriori method
-###  4.visualize the result and find some points, go to a conclusion
+### 3.execute analysis with apriori method
+### 4.visualize the result and find some points, go to a conclusion
 It was found that we could make use of the word that appeared from the comments in some marketing points.
 
 ![assorules](https://user-images.githubusercontent.com/66956480/108652128-bca33c00-7506-11eb-974b-b466940bf25e.png)
 
 
-Korean ver.
 
 # 도서 데이터 분석
 
