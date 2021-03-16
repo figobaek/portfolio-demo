@@ -3,7 +3,7 @@
 
 ## (1) Analysis of the books data   
 
-### goal: make reading completed prediction algorithm model with the data purchased books and ML   
+### Goal: make reading completed prediction algorithm model with the data purchased books and ML   
 
 ### [Process]  
 
@@ -34,7 +34,7 @@
 
 ## (2) Analysis of youtube video comments of the publisher with Kmeans clustering  
 
-### The intention: clustering comments from youtube videos of publishers that are popular based on the counts of comments after pre-processing, which is to confirm a hypothesis that the type of comments would be different publisher’s comments one another.  
+### Intention: clustering comments from youtube videos of publishers that are popular based on the counts of comments after pre-processing, which is to confirm a hypothesis that the type of comments would be different publisher’s comments one another.  
 
 ### [Process]  
 
@@ -57,7 +57,7 @@
 
 ## (3) Analysis of youtube video comments of the publisher with association rules   
 
-### The intention: executing association rules of comments from youtube videos of publishers that are popular based on the counts of comments after pre-processing, and try to find the marketing point from the insight that  
+### Intention: executing association rules of comments from youtube videos of publishers that are popular based on the counts of comments after pre-processing, and try to find the marketing point from the insight that  
 
 ### [Process]  
 
