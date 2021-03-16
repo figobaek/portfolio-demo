@@ -72,6 +72,8 @@ It was found that we could make use of the word that appeared from the comments 
 
 
 
+
+
 # 도서 데이터 분석
 
 ## 기획의도 : 도서 구매 관련 데이터와 머신러닝을 이용해 완독 예측 알고리즘 모델을 만든다. 
